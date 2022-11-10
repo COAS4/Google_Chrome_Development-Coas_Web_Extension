@@ -1,0 +1,33 @@
+{
+  "action": {
+      "default_popup": "popup.html",
+      "default_title": "COAS"
+  },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "description": "Intelligent text extractor | OCR |  Extract text from images and Videos| File Converter and Compressor",
+    "host_permissions": [
+      "http://ocr.quixy.com/perform-ocr",
+      "https://unpkg.com/convertapi-js/lib/convertapi.js"
+    ],
+    "manifest_version": 3,
+    "name": "COAS: Free Text Extractor, OCR",
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "storage"
+    ],
+    "version": "1.0",
+  "web_accessible_resources": [ {
+    "matches": [ "*://*/*" ],
+    "resources": [ "static/fonts/Poppins/Poppins-Medium.ttf", "static/fonts/Varela_Round/VarelaRound-Regular.ttf", "static/fonts/Rubik/Rubik-VariableFont_wght.ttf", "static/icons/Close_Grey.png", "static/icons/OCR_Black.png" ]
+  } ],
+  "icons" : {
+    "16": "static/icons/cl.png",
+    "32":"static/icons/cl.png",
+    "48": "static/icons/cl.png",
+    "128": "static/icons/cl.png"
+  }
+
+}

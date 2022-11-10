@@ -1,0 +1,139 @@
+
+
+#output_outer_box{
+    height: 460px;
+    width: 410px;
+    min-height: 460px;
+    min-width: 410px;
+    max-height: 460px;
+    max-width: 410px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 10000000000000;
+    top:6px;
+    right:6px;
+    border-radius: 6px;
+    box-shadow: 0 0 9px #034ea2;
+
+}
+
+#output_inner_box{
+    height:410px;
+    width:410px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-image: linear-gradient(45deg, #f1d3ff 0%, #b7f4ff 100%);
+}
+
+#output_exit{
+    width: 410px;
+    height: 30px;
+    padding-right: 16px;
+    box-sizing: border-box;
+    margin: 14px 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#output_exit_link{
+    cursor: pointer;
+    background : none;
+}
+
+#xmark{
+    height:21px;
+    width:21px;
+    filter: none !important;
+}
+
+#output_main_box{
+    width:380px;
+    height: 300px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x:unset;
+    font-size: 18px;
+    line-height: 24px;
+    font-family: 'Varela Round', sans-serif;
+    color:rgb(46, 45, 45);
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 5px;
+    padding:20px 20px;
+    overflow-wrap: break-word;
+    background-color: white;
+}
+
+#output_buttons{
+    height: 100px;
+    width: 410px;
+    padding: 0 30px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: linear-gradient(45deg, #f1d3ff 0%, #b7f4ff 100%);
+    border-top: 1px solid rgb(230, 230, 230);
+    border-radius: 0 0 6px 6px;
+
+}
+
+
+#output_buttons div{
+    cursor: pointer;
+    height: 45px;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: "Poppins", serif;
+    font-weight: 500;
+}
+
+#output_buttons div:active{
+    box-shadow: 0 0 5px gray;
+}
+
+
+#redo_btn{
+    background-color: blue;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+}
+
+
+#redo_btn_icon{
+    height:30px;
+    width:30px;
+    filter: none !important;
+}
+
+#copy_btn{
+    background-color: blue;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:130px;
+}
+
+#output_main_box::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    margin-block: 23px;
+}
+
+#output_main_box::-webkit-scrollbar-thumb {
+    border-left: 4px solid rgb(119, 118, 118);
+    background-clip: padding-box;
+}

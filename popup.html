@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Rubik:wght@500&family=Varela+Round&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+    body {
+      height: 260px;
+      width: 315px;
+      font-size: 15px;
+      margin: 5px;
+      font-family: "Poppins",serif;
+      background-color: #f1d3ff;
+      background-image: linear-gradient(45deg, #f1d3ff 0%, #b7f4ff 100%);
+
+    }
+
+    .mod {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0px 6px 6px 6px;
+      box-sizing: border-box;
+      border-radius: 6px;
+    }
+
+
+    .convert {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      box-sizing: border-box;
+      border-radius: 6px;
+      align-self: flex-start;
+      padding: 18px;
+    }
+
+    #xmark {
+      width: 90%;
+      text-align: right;
+      font-size: 23px;
+      cursor: pointer;
+    }
+
+    #xmark a {
+      color: gray;
+      text-decoration: none;
+    }
+
+    #logo {
+      alignment: left;
+      padding: 10px 50px -50px 10px;
+    }
+
+    #select-heading {
+      font-size: 17px;
+      color: rgb(73, 73, 73);
+      margin-top: -10px;
+      align-self: flex-start;
+      padding-left: 18px;
+    }
+
+    #ocr_language {
+      align-self: flex-start;
+      padding-left: 18px;
+    }
+
+    #ocr_language_select {
+      height: 33px;
+      min-height: 33px;
+      max-height: 33px;
+      width: 266px;
+      min-width: 266px;
+      max-width: 266px;
+      font-family: "Poppins",serif;
+      font-size: 16px;
+      border: None;
+      background: None;
+      outline: 0px;
+      border-bottom: 1px solid gray;
+      color: #034ea2;
+      padding-left: 3px;
+    }
+
+    #ocr_language_select option {
+      color: gray;
+    }
+
+    button {
+      font-size: 17px;
+      font-weight: bold;
+      height: 55px;
+      width: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      background-color: #034ea2;
+      color: #fefeff;
+      border: None;
+      border-radius: 5px;
+    }
+
+    button:active {
+      box-shadow: 0px 0px 1px 1px #034ea2;
+    }
+
+    #ocr_img {
+      height: 33px;
+      width: 33px;
+    }
+
+    .foot {
+      width: 90%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 15px;
+      margin-bottom: -6px;
+    }
+
+    #help {
+      color: gray;
+      font-size: 16px;
+    }
+
+    #help i {
+      cursor: pointer;
+      color: #494949;
+    }
+
+    #need_help_tooltip {
+      visibility: hidden;
+      width: 260px;
+      height: 118px;
+      bottom: 49%;
+      left: 5.4%;
+      background-color: rgb(236 245 254);
+      color: #494949;
+      padding: 15px;
+      border-radius: 6px;
+      font-size: 15px;
+      text-align: center;
+      position: absolute;
+      z-index: 1000000;
+    }
+
+    #help i:hover+#need_help_tooltip {
+      visibility: visible;
+    }
+
+
+
+    #c_oas_ocr_popup_dropbtn {
+      width: 267px;
+      color: black;
+      font-size: 16px;
+      padding: 6px 6px;
+      border: none;
+      border-bottom: 1px solid gray;
+      cursor: pointer;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1px;
+    }
+
+    #c_oas_ocr_popup_dropbtn i {
+      color: gray;
+    }
+
+    #c_oas_ocr_popup_dropdown {
+      width: 315px;
+      margin-top: -10px;
+    }
+
+    .c_oas_ocr_popup_dropdown_content {
+      display: none;
+      position: absolute;
+      background-color: #ffffff;
+      width: 267px;
+      height: 115px;
+      overflow: auto;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      box-sizing: border-box;
+      border: 1px solid gray;
+      border-radius: 0px 0px 6px 6px;
+    }
+
+    .c_oas_ocr_popup_dropdown_content>div {
+      color: gray;
+      text-decoration: none;
+      display: block;
+      padding-left: 10px;
+      line-height: 25px;
+      cursor: pointer;
+    }
+
+    .c_oas_ocr_popup_dropdown_content>div:hover {
+      background-color: #ddd;
+      color: #034ea2;
+    }
+
+    .c_oas_ocr_popup_dropdown_content_show {
+      display: block;
+    }
+
+    .c_oas_ocr_popup_dropdown_content::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      margin-block: 5px;
+    }
+
+    .c_oas_ocr_popup_dropdown_content::-webkit-scrollbar-thumb {
+      border-left: 4px solid rgb(119, 118, 118);
+      background-clip: padding-box;
+      border-radius: 3px;
+    }
+
+    .convert {
+      text-align: center;
+    }
+    #crop_btn {
+      background-color: blue;
+      color: white;
+    }
+
+  </style>
+</head>
+
+<body >
+<div id="logo"><img src="static/logo/coas%205%20dark.png" alt="" height="65">
+  </div>
+<div class="mod">
+  <div id='xmark'><a href=""><i class="fa-solid fa-xmark"></i></a>
+  </div>
+  <h3>Text Extractor</h3>
+  <div id='select-heading'>Choose language to extract</div>
+  <div id='ocr_language'>
+
+    <div id="c_oas_ocr_popup_dropdown">
+      <div id="c_oas_ocr_popup_dropbtn"> <span id='eng' class='selected_ocr_language'>English</span> <i
+              class="fa-solid fa-caret-down"></i></div>
+      <div class="c_oas_ocr_popup_dropdown_content">
+        <div id='l29'>English</div>
+        <div id='l49'>Hindi</div>
+        <div id='l36'>French</div>
+        <div id='l20'>Chinese</div>
+        <div id='l57'>Japanese</div>
+        <div id='l87'>Portuguese</div>
+        <div id='l101'>Spanish; Castilian</div>
+        <hr>
+        <div id='l1'>Afrikaans</div>
+        <div id='l2'>Albanian</div>
+        <div id='l3'>Amharic</div>
+        <div id='l4'>Arabic</div>
+        <div id='l5'>Armenian</div>
+        <div id='l6'>Assamese</div>
+        <div id='l7'>Azerbaijani</div>
+        <div id='l8'>Azerbaijani - Cyrilic</div>
+        <div id='l9'>Basque</div>
+        <div id='l10'>Belarusian</div>
+        <div id='l11'>Bengali</div>
+        <div id='l12'>Bosnian</div>
+        <div id='l13'>Breton</div>
+        <div id='l14'>Bulgarian</div>
+        <div id='l15'>Burmese</div>
+        <div id='l16'>Catalan; Valencian</div>
+        <div id='l17'>Cebuano</div>
+        <div id='l18'>Central Khmer</div>
+        <div id='l19'>Cherokee</div>
+        <div id='l21'>Chinese - Traditional</div>
+        <div id='l22'>Corsican</div>
+        <div id='l23'>Croatian</div>
+        <div id='l24'>Czech</div>
+        <div id='l25'>Danish</div>
+        <div id='l26'>Danish - Fraktur</div>
+        <div id='l27'>Dutch; Flemish</div>
+        <div id='l28'>Dzongkha</div>
+        <div id='l30'>English, Middle (1100-1500)</div>
+        <div id='l31'>Esperanto</div>
+        <div id='l32'>Estonian</div>
+        <div id='l33'>Faroese</div>
+        <div id='l34'>Filipino (old - Tagalog)</div>
+        <div id='l35'>Finnish</div>
+        <div id='l37'>French, Middle (ca.1400-1600)</div>
+        <div id='l38'>Galician</div>
+        <div id='l39'>Georgian</div>
+        <div id='l40'>Georgian - Old</div>
+        <div id='l41'>German</div>
+        <div id='l42'>German - Fraktur</div>
+        <div id='l43'>German - Fraktur</div>
+        <div id='l44'>Greek, Ancient (to 1453)</div>
+        <div id='l45'>Greek, Modern (1453-)</div>
+        <div id='l46'>Gujarati</div>
+        <div id='l47'>Haitian; Haitian Creole</div>
+        <div id='l48'>Hebrew</div>
+        <div id='l50'>Hungarian</div>
+        <div id='l51'>Icelandic</div>
+        <div id='l52'>Indonesian</div>
+        <div id='l53'>Inuktitut</div>
+        <div id='l54'>Irish</div>
+        <div id='l55'>Italian</div>
+        <div id='l56'>Italian - Old</div>
+        <div id='l58'>Javanese</div>
+        <div id='l59'>Kannada</div>
+        <div id='l60'>Kazakh</div>
+        <div id='l61'>Kirghiz; Kyrgyz</div>
+        <div id='l62'>Korean</div>
+        <div id='l63'>Korean (vertical)</div>
+        <div id='l64'>Kurdish (Arabic Script)</div>
+        <div id='l65'>Kurmanji (Kurdish - Latin Script)</div>
+        <div id='l66'>Lao</div>
+        <div id='l67'>Latin</div>
+        <div id='l68'>Latvian</div>
+        <div id='l69'>Lithuanian</div>
+        <div id='l70'>Luxembourgish</div>
+        <div id='l71'>Macedonian</div>
+        <div id='l72'>Malay</div>
+        <div id='l73'>Malayalam</div>
+        <div id='l74'>Maltese</div>
+        <div id='l75'>Maori</div>
+        <div id='l76'>Marathi</div>
+        <div id='l77'>Math / equation detection module</div>
+        <div id='l78'>Mongolian</div>
+        <div id='l79'>Nepali</div>
+        <div id='l80'>Norwegian</div>
+        <div id='l81'>Occitan (post 1500)</div>
+        <div id='l82'>Orientation and script detection module</div>
+        <div id='l83'>Oriya</div>
+        <div id='l84'>Panjabi; Punjabi</div>
+        <div id='l85'>Persian</div>
+        <div id='l86'>Polish</div>
+        <div id='l88'>Pushto; Pashto</div>
+        <div id='l89'>Quechua</div>
+        <div id='l90'>Romanian; Moldavian; Moldovan</div>
+        <div id='l91'>Russian</div>
+        <div id='l92'>Sanskrit</div>
+        <div id='l93'>Scottish Gaelic</div>
+        <div id='l94'>Serbian</div>
+        <div id='l95'>Serbian - Latin</div>
+        <div id='l96'>Sindhi</div>
+        <div id='l97'>Sinhala; Sinhalese</div>
+        <div id='l98'>Slovak</div>
+        <div id='l99'>Slovak - Fraktur</div>
+        <div id='l100'>Slovenian</div>
+        <div id='l102'>Spanish; Castilian - Old</div>
+        <div id='l103'>Sundanese</div>
+        <div id='l104'>Swahili</div>
+        <div id='l105'>Swedish</div>
+        <div id='l106'>Syriac</div>
+        <div id='l107'>Tagalog (new - Filipino)</div>
+        <div id='l108'>Tajik</div>
+        <div id='l109'>Tamil</div>
+        <div id='l110'>Tatar</div>
+        <div id='l111'>Telugu</div>
+        <div id='l112'>Thai</div>
+        <div id='l113'>Tibetan</div>
+        <div id='l114'>Tigrinya</div>
+        <div id='l115'>Tonga</div>
+        <div id='l116'>Turkish</div>
+        <div id='l117'>Uighur; Uyghur</div>
+        <div id='l118'>Ukrainian</div>
+        <div id='l119'>Urdu</div>
+        <div id='l120'>Uzbek</div>
+        <div id='l121'>Uzbek - Cyrilic</div>
+        <div id='l122'>Vietnamese</div>
+        <div id='l123'>Welsh</div>
+        <div id='l124'>Western Frisian</div>
+        <div id='l125'>Yiddish</div>
+        <div id='l126'>Yoruba</div>
+      </div>
+    </div>
+<br>
+  </div>
+  <button id='crop_btn'>Select an area&nbsp;&nbsp;<img id='ocr_img' src="./static/icons/OCR_White.png"
+                                                       alt=""></button>
+  <div class="foot">
+
+    <div id='help'> Need help&nbsp;<i class="fa-regular fa-circle-question"></i>
+      <div id='need_help_tooltip'>
+        Choose the appropriate language. Click <b>"Select an area"</b> button, hold down the left mouse
+        button and drag the area to start
+        extracting the desired text.
+      </div>
+    </div>
+  </div>
+  </div>
+
+<hr>
+
+<div class="convert">
+  <h3>File Converter</h3>
+  <p>
+    <label for="fileInput">Convert DOCX file to PDF</label>
+    <input id="fileInput" type="file" accept=".docx">
+  </p>
+  <p id="result">
+    Result file:
+    <a id="resultLink" href="">Download</a>
+  </p>
+
+
+  <p>
+    <label for="imageInput">Convert JPG image to PDF</label>
+    <input id="imageInput" type="file" accept=".jpg">
+  </p>
+  <p id="imageResult">
+    Result File:
+    <a id="resultLinkImage" href="">Download</a>
+  </p>
+
+
+  <p>
+    <label for="excelInput">Convert EXCEL file to PDF</label>
+    <input id="excelInput" type="file" accept=".xlsx">
+  </p>
+  <p id="excelResult">
+    Result file:
+    <a id="resultLinkExcel" href="">Download</a>
+  </p>
+
+
+  <p>
+    <label for="compressInput">Compress PDF File
+    </label>
+    <input id="compressInput" type="file" accept=".pdf">
+  </p>
+  <p id="compressResult">
+    Result file:
+    <a id="resultLinkCompress" href="">Download</a>
+  </p>
+</div>
+<script src="./popup_script.js"></script>
+</body>
+
+</html>
